@@ -1,11 +1,10 @@
 import logging
 from os import O_TRUNC
 from flask import Flask,render_template,request
-import requests
 import pickle
 import numpy as np
 import smtplib
-
+import requests
 app = Flask(__name__)
 logging.basicConfig(filename='logfile.log', filemode='a',level=logging.INFO,format="%(asctime)s : %(levelname)s : %(message)s", datefmt="%Y-%m-%D %H %M %S")
 
