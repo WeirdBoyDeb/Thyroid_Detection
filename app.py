@@ -8,7 +8,7 @@ import requests
 app = Flask(__name__)
 logging.basicConfig(filename='logfile.log', filemode='a',level=logging.INFO,format="%(asctime)s : %(levelname)s : %(message)s", datefmt="%Y-%m-%D %H %M %S")
 
-with open("Thyroid-Disease-Detection-main\src\Thyroid_model.pkl","rb") as model_file:
+with open("src\Thyroid_model.pkl","rb") as model_file:
     model=pickle.load(model_file)
 
 
@@ -39,6 +39,9 @@ def index():
    except:
        logging.error("===PAGE RENDERING FAIL===")
    
+@app.route("/about", methods = ["GET", "POST"])
+def about():
+    return render_template('moreinfo.html')
 
 
 @app.route("/predict", methods = ["GET", "POST"])
@@ -135,7 +138,7 @@ def predictresult():
 
         
     Output=f"Patient has {res_Val}"
-    #sent_Email('soumyadeep4066@gmail.com', 'Bolo Radhe Radhe')
+    Ssent_Email('soumyadeep4066@gmail.com', 'Bolo Radhe Radhe')
     logging.info("===OUTPUT PASSED===")
     return render_template('predictresult.html',output=Output)
 
